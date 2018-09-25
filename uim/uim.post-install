@@ -1,0 +1,9 @@
+#!/bin/sh
+gtk-query-immodules-2.0 --update-cache
+gtk-query-immodules-3.0 --update-cache
+cat <<EOT > /etc/profile.d/uim.sh
+#!/bin/sh
+export XMODIFIERS=@im=uim
+export GTK_IM_MODULE=uim
+uim-xim &
+EOT

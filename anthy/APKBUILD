@@ -1,0 +1,46 @@
+# Contributor:
+# Maintainer:
+pkgname=anthy
+pkgver=9100h
+pkgrel=0
+pkgdesc="a system for Japanese input method"
+url="http://anthy.sourceforge.jp"
+arch="all"
+license="LGPL-2.1"
+depends=""
+makedepends=""
+install=""
+subpackages="$pkgname-dev"
+source="https://ja.osdn.net/projects/anthy/downloads/37536/anthy-9100h.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+prepare() {
+	default_prepare
+	cd "$builddir"
+	sed -i 's/linux-gnu/linux-musl/g' config.sub
+}
+
+build() {
+	cd "$builddir"
+	./configure \
+		--build="$CBUILD" \
+		--host="$CHOST" \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--localstatedir=/var \
+		--disable-static
+	make
+}
+
+check() {
+	cd "$builddir"
+	make check
+}
+
+package() {
+	cd "$builddir"
+	make DESTDIR="$pkgdir" install
+}
+
+sha512sums="315ebd9e1af208f3ecaeaa13620213b35f004e47edb54e60c3e02c2997444cd2326cc58b725dd2d0bd6a723130884d946ea193ea3d92418082256b59ecc8d88b  anthy-9100h.tar.gz"
