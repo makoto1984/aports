@@ -10,7 +10,7 @@ license="GPL-2"
 depends="qt5-qtsvg hunspell aspell enchant mythes"
 makedepends="qt5-qtsvg-dev file-dev hunspell-dev aspell-dev enchant-dev mythes-dev"
 install=""
-subpackages="$pkgname-doc"
+subpackages="$pkgname-doc $pkgname-lang"
 source="https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.1-2.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
