@@ -8,8 +8,8 @@ pkgdesc="A multilingual input method framework"
 url="https://github.com/uim/uim"
 arch="all"
 license="BSD"
-depends="gtk+2.0 gtk+3.0 anthy"
-makedepends="gtk+2.0-dev gtk+3.0-dev libtool gettext-dev anthy-dev"
+depends="gtk+2.0 gtk+3.0 qt5-qtx11extras libedit anthy"
+makedepends="gtk+2.0-dev gtk+3.0-dev qt5-qtx11extras-dev libtool gettext-dev libedit-dev anthy-dev"
 install="$pkgname.post-install $pkgname.post-deinstall"
 subpackages="$pkgname-dev $pkgname-doc $pkgname-lang"
 source="https://github.com/uim/uim/releases/download/1.8.8/uim-1.8.8.tar.bz2"
@@ -25,6 +25,7 @@ build() {
 		--mandir=/usr/share/man \
 		--localstatedir=/var \
 		--with-anthy-utf8 \
+		--with-qt5-immodule \
 		--enable-dict
 	make
 }
