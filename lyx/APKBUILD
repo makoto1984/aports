@@ -1,0 +1,40 @@
+# Contributor:
+# Maintainer:
+pkgname=lyx
+pkgver=2.3.1
+pkgrel=0
+pkgdesc="WYSIWYM document processor"
+url="https://www.lyx.org"
+arch="all"
+license="GPL-2"
+depends="qt5-qtsvg hunspell aspell enchant mythes"
+makedepends="qt5-qtsvg-dev file-dev hunspell-dev aspell-dev enchant-dev mythes-dev"
+install=""
+subpackages="$pkgname-doc"
+source="https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.1-2.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--localstatedir=/var \
+		--enable-qt5
+	make
+}
+
+check() {
+	cd "$builddir"
+	make check
+}
+
+package() {
+	cd "$builddir"
+	make DESTDIR="$pkgdir" install
+}
+
+sha512sums="e1b7193dbab7b5a617b0e8a82a9907fb176f619443f1bca080e83ae229c927c26cb62b9ed8e82b95a8b1363417015b0cb349fb223da973c20e7eb13b5ff97534  lyx-2.3.1-2.tar.gz"
