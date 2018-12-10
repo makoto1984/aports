@@ -1,0 +1,40 @@
+# Contributor:
+# Maintainer:
+pkgname=libpinyin
+pkgver=2.2.1
+pkgrel=0
+pkgdesc="Library to deal with pinyin."
+url="https://github.com/libpinyin/libpinyin"
+arch="all"
+license="GPL-3.0"
+depends=""
+makedepends="glib-dev db-dev"
+install=""
+subpackages="$pkgname-dev $pkgname-doc"
+source="https://github.com/libpinyin/libpinyin/releases/download/2.2.1/libpinyin-2.2.1.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure \
+		--enable-libzhuyin \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--localstatedir=/var
+	make
+}
+
+check() {
+	cd "$builddir"
+	make check
+}
+
+package() {
+	cd "$builddir"
+	make DESTDIR="$pkgdir" install
+}
+
+sha512sums="3612131a412c0502ce5964d6056196fee1af113e0b3ee9e8fc961ad5bc2019a8af011aaf4e8c959472dce2099b8404717c5d82ee496600d7332dd06b3522c71f  libpinyin-2.2.1.tar.gz"

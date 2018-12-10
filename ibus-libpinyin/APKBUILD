@@ -1,0 +1,42 @@
+# Contributor:
+# Maintainer:
+pkgname=ibus-libpinyin
+pkgver=1.10.92
+pkgrel=0
+pkgdesc="Chinese input method libpinyin IMEngine for IBus Framework"
+url="https://github.com/libpinyin/ibus-libpinyin"
+arch="all"
+license="GPL-2.0"
+depends="ibus libpinyin sqlite"
+makedepends="ibus-dev libpinyin-dev sqlite-dev intltool"
+install=""
+subpackages="$pkgname-lang"
+source="https://github.com/libpinyin/ibus-libpinyin/releases/download/1.10.92/ibus-libpinyin-1.10.92.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+export IBUS_CFLAGS='-I/usr/include/ibus-1.0'
+export IBUS_LIBS='-libus-1.0 -lgio-2.0 -lgobject-2.0'
+
+build() {
+	cd "$builddir"
+	./configure \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--localstatedir=/var
+	make
+}
+
+check() {
+	cd "$builddir"
+	make check
+}
+
+package() {
+	cd "$builddir"
+	make DESTDIR="$pkgdir" install
+}
+
+sha512sums="706da1343835f4e78e1a9c5017628db3da08d1318844d043f72a92463e09c16dc67b30eccf60af12c54bb7c44a713ff72003d8eee5605873d65b40649ca30d48  ibus-libpinyin-1.10.92.tar.gz"
