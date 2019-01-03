@@ -1,0 +1,41 @@
+# Contributor:
+# Maintainer:
+pkgname=ibus-input-pad
+pkgver=1.4.99.20140916
+pkgrel=0
+pkgdesc="Input Pad for IBus"
+url="https://github.com/fujiwarat/ibus-input-pad"
+arch="all"
+license="GPL-2.0"
+depends="ibus input-pad"
+makedepends="ibus-dev input-pad-dev"
+install=""
+subpackages="$pkgname-lang"
+source="https://github.com/fujiwarat/ibus-input-pad/releases/download/1.4.99.20140916/ibus-input-pad-1.4.99.20140916.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+export IBUS_CFLAGS="-I/usr/include/ibus-1.0"
+export IBUS_LIBS="-libus-1.0"
+
+build() {
+	cd "$builddir"
+	./configure \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--localstatedir=/var
+	make
+}
+
+check() {
+	cd "$builddir"
+	make check
+}
+
+package() {
+	cd "$builddir"
+	make DESTDIR="$pkgdir" install
+}
+
+sha512sums="6b03dff097d06ff7b51393ce49c04faa169152c5b02d2cfbcbfab480a00920bdeb7f5e6ebfed19bdee792fe9b52e0aacda0ff629fccff24523f000d8915c56ba  ibus-input-pad-1.4.99.20140916.tar.gz"

@@ -1,0 +1,38 @@
+# Contributor:
+# Maintainer:
+pkgname=input-pad
+pkgver=1.0.99.20140916
+pkgrel=0
+pkgdesc="Input Pad"
+url="https://github.com/fujiwarat/input-pad"
+arch="all"
+license="LGPL-2.1"
+depends="gtk+3.0"
+makedepends="gtk+3.0-dev libxkbfile-dev libxml2-dev"
+install=""
+subpackages="$pkgname-dev $pkgname-doc $pkgname-lang"
+source="https://github.com/fujiwarat/input-pad/releases/download/1.0.99.20140916/input-pad-1.0.99.20140916.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--localstatedir=/var
+	make
+}
+
+check() {
+	cd "$builddir"
+	make check
+}
+
+package() {
+	cd "$builddir"
+	make DESTDIR="$pkgdir" install
+}
+sha512sums="a7dd7996f69dbb6cc200be3c181e82ef8d701f85f1b27a886a8910afb3e673c1d71878e70b79141570a28a31dd47565868a990a358058ae8b99c29c76a316261  input-pad-1.0.99.20140916.tar.gz"
