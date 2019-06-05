@@ -1,0 +1,39 @@
+# Contributor:
+# Maintainer:
+pkgname=cgoban
+pkgver=1.9.14
+pkgrel=0
+pkgdesc="Complete Goban Mark 1"
+url="http://cgoban1.sourceforge.net"
+arch="all"
+license="GPL-2.0"
+depends="libxt"
+makedepends="libxt-dev"
+install=""
+subpackages="$pkgname-doc"
+source="http://downloads.sourceforge.net/project/cgoban1/cgoban1/1.9.14/cgoban-1.9.14.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--localstatedir=/var
+	make
+}
+
+check() {
+	cd "$builddir"
+	make check
+}
+
+package() {
+	cd "$builddir"
+	make DESTDIR="$pkgdir" install
+}
+
+sha512sums="0a471845dbfb3029c2371ba91375aa19ca23591f355452d87eeef2ed56e948a60aedb21923658e74923f16b40ce00f5d74f40f44facf93695d20615b874b354c  cgoban-1.9.14.tar.gz"
