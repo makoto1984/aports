@@ -1,0 +1,31 @@
+pkgname=shadowsocks-libev
+pkgver=3.2.5
+pkgrel=3
+pkgdesc="lightweight secured SOCKS5 proxy"
+url="https://shadowsocks.org/en/download/servers.html"
+arch="all"
+license="GPL-3.0"
+depends="pcre libev mbedtls c-ares libsodium"
+makedepends="asciidoc autoconf libtool linux-headers pcre-dev xmlto libev-dev mbedtls-dev c-ares-dev libsodium-dev zlib-dev"
+install=""
+subpackages="$pkgname-dev $pkgname-doc"
+source="https://github.com/shadowsocks/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
+builddir="$srcdir/$pkgname-$pkgver"
+
+build() {
+	cd "$builddir"
+	./configure \
+		--build=$CBUILD \
+		--host=$CHOST \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--localstatedir=/var
+	make
+}
+
+package() {
+	cd "$builddir"
+	make DESTDIR="$pkgdir" install
+}
+sha512sums="a90042a6e45a5e254161db7c673252ed42f6f568f63b26a14272baa33ecbbb897febefd302e8ddbfe75250276e8960247ab04cb8fb701ed6f106f5ad26d4e08c  shadowsocks-libev-3.2.5.tar.gz"
