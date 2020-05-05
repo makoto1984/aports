@@ -1,7 +1,7 @@
 # Contributor:
 # Maintainer:
 pkgname=libpinyin
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=0
 pkgdesc="Library to deal with pinyin."
 url="https://github.com/libpinyin/libpinyin"
@@ -11,7 +11,7 @@ depends=""
 makedepends="glib-dev db-dev"
 install=""
 subpackages="$pkgname-dev $pkgname-doc"
-source="https://github.com/libpinyin/libpinyin/releases/download/2.2.1/libpinyin-2.2.1.tar.gz"
+source="https://github.com/libpinyin/libpinyin/releases/download/2.3.0/libpinyin-2.3.0.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
@@ -36,5 +36,4 @@ package() {
 	cd "$builddir"
 	make DESTDIR="$pkgdir" install
 }
-
-sha512sums="3612131a412c0502ce5964d6056196fee1af113e0b3ee9e8fc961ad5bc2019a8af011aaf4e8c959472dce2099b8404717c5d82ee496600d7332dd06b3522c71f  libpinyin-2.2.1.tar.gz"
+sha512sums="269750b66d7a81ebc0c465cd3571f96112fe85e3a9284b5cad6554dd6c55a4178e4ccd8139148d05cd361e756c486ec575550444f1205562c46195b6fce51ec8  libpinyin-2.3.0.tar.gz"

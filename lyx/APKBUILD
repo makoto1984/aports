@@ -1,7 +1,7 @@
 # Contributor:
 # Maintainer:
 pkgname=lyx
-pkgver=2.3.1
+pkgver=2.3.4.3
 pkgrel=0
 pkgdesc="WYSIWYM document processor"
 url="https://www.lyx.org"
@@ -11,7 +11,7 @@ depends="qt5-qtsvg hunspell aspell enchant mythes"
 makedepends="qt5-qtsvg-dev file-dev hunspell-dev aspell-dev enchant-dev mythes-dev"
 install=""
 subpackages="$pkgname-doc $pkgname-lang"
-source="https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.1-2.tar.gz"
+source="https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.4.3.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
@@ -36,5 +36,4 @@ package() {
 	cd "$builddir"
 	make DESTDIR="$pkgdir" install
 }
-
-sha512sums="e1b7193dbab7b5a617b0e8a82a9907fb176f619443f1bca080e83ae229c927c26cb62b9ed8e82b95a8b1363417015b0cb349fb223da973c20e7eb13b5ff97534  lyx-2.3.1-2.tar.gz"
+sha512sums="a1662e5fc6e6e9bb4adb12a1b5ca41878a8c5b6551bb633255c945ddc8c133f2d73a4fdbfc862221623e2a72a767d286e1715de01ea7c0e7493781735ed60fc2  lyx-2.3.4.3.tar.gz"

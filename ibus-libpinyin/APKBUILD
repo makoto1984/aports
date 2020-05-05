@@ -1,7 +1,7 @@
 # Contributor:
 # Maintainer:
 pkgname=ibus-libpinyin
-pkgver=1.10.92
+pkgver=1.11.92
 pkgrel=0
 pkgdesc="Chinese input method libpinyin IMEngine for IBus Framework"
 url="https://github.com/libpinyin/ibus-libpinyin"
@@ -11,7 +11,7 @@ depends="ibus libpinyin sqlite"
 makedepends="ibus-dev libpinyin-dev sqlite-dev intltool"
 install=""
 subpackages="$pkgname-lang"
-source="https://github.com/libpinyin/ibus-libpinyin/releases/download/1.10.92/ibus-libpinyin-1.10.92.tar.gz"
+source="https://github.com/libpinyin/ibus-libpinyin/releases/download/1.11.92/ibus-libpinyin-1.11.92.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 export IBUS_CFLAGS='-I/usr/include/ibus-1.0'
@@ -38,5 +38,4 @@ package() {
 	cd "$builddir"
 	make DESTDIR="$pkgdir" install
 }
-
-sha512sums="706da1343835f4e78e1a9c5017628db3da08d1318844d043f72a92463e09c16dc67b30eccf60af12c54bb7c44a713ff72003d8eee5605873d65b40649ca30d48  ibus-libpinyin-1.10.92.tar.gz"
+sha512sums="0dca9db0925738bd0cba313895aaadf0d831d3003f36b41edfafa0231ccd84573c9d9090cd3770b815030b98297041e3dd2e9a55b4dec99552e344a0bc0fd118  ibus-libpinyin-1.11.92.tar.gz"
