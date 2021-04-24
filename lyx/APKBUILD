@@ -1,7 +1,7 @@
 # Contributor:
 # Maintainer:
 pkgname=lyx
-pkgver=2.3.4.4
+pkgver=2.3.6.1
 pkgrel=0
 pkgdesc="WYSIWYM document processor"
 url="https://www.lyx.org"
@@ -11,8 +11,8 @@ depends="qt5-qtsvg hunspell aspell enchant2 mythes"
 makedepends="qt5-qtsvg-dev file-dev hunspell-dev aspell-dev enchant2-dev mythes-dev"
 install=""
 subpackages="$pkgname-doc $pkgname-lang"
-#source="https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.4.4.tar.gz"
-source="https://mirrors.tuna.tsinghua.edu.cn/lyx/stable/2.3.x/lyx-2.3.4.4.tar.gz"
+#source="https://ftp.lip6.fr/pub/lyx/stable/2.3.x/lyx-2.3.6.1.tar.gz"
+source="https://mirrors.tuna.tsinghua.edu.cn/lyx/stable/2.3.x/lyx-2.3.6.1.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
@@ -37,4 +37,4 @@ package() {
 	cd "$builddir"
 	make DESTDIR="$pkgdir" install
 }
-sha512sums="7c088b8a1d207434d09be338edaff9e16a397c9b0a6c1a769548baf5fa590225dec41baa7993ca2d0571bb62261af8b8a139ec5f3c3588a6c3d9ad213ae6f562  lyx-2.3.4.4.tar.gz"
+sha512sums="b2f24d32c3716144fc19a5187d59dce86c718e9180b3b33826a04477c5deeed8238c31e0569b8c218164726ab10b66c76c22dc7e0610ca18a7b7e651a3525cbd  lyx-2.3.6.1.tar.gz"

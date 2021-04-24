@@ -1,17 +1,17 @@
 # Contributor:
 # Maintainer:
 pkgname=ibus-libpinyin
-pkgver=1.11.92
+pkgver=1.12.0
 pkgrel=0
 pkgdesc="Chinese input method libpinyin IMEngine for IBus Framework"
 url="https://github.com/libpinyin/ibus-libpinyin"
 arch="all"
 license="GPL-2.0"
-depends="ibus libpinyin sqlite"
-makedepends="ibus-dev libpinyin-dev sqlite-dev intltool"
+depends="ibus libpinyin sqlite libsoup json-glib opencc"
+makedepends="ibus-dev libpinyin-dev libsoup-dev json-glib-dev intltool opencc-dev"
 install=""
 subpackages="$pkgname-lang"
-source="https://github.com/libpinyin/ibus-libpinyin/releases/download/1.11.92/ibus-libpinyin-1.11.92.tar.gz"
+source="https://github.com/libpinyin/ibus-libpinyin/releases/download/1.12.0/ibus-libpinyin-1.12.0.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 export IBUS_CFLAGS='-I/usr/include/ibus-1.0'
@@ -25,7 +25,9 @@ build() {
 		--prefix=/usr \
 		--sysconfdir=/etc \
 		--mandir=/usr/share/man \
-		--localstatedir=/var
+		--localstatedir=/var \
+		--enable-opencc \
+		--enable-cloud-input-mode
 	make
 }
 
@@ -38,4 +40,4 @@ package() {
 	cd "$builddir"
 	make DESTDIR="$pkgdir" install
 }
-sha512sums="0dca9db0925738bd0cba313895aaadf0d831d3003f36b41edfafa0231ccd84573c9d9090cd3770b815030b98297041e3dd2e9a55b4dec99552e344a0bc0fd118  ibus-libpinyin-1.11.92.tar.gz"
+sha512sums="894bbd6f4f613037bf9c01c8b7a0ff46898135131e84413245751ad01672152b133f1f31a3b38616f13e68da8c90ec9c028082db86b88e4469edb23eeea965df  ibus-libpinyin-1.12.0.tar.gz"
