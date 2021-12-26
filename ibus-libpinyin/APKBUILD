@@ -7,15 +7,12 @@ pkgdesc="Chinese input method libpinyin IMEngine for IBus Framework"
 url="https://github.com/libpinyin/ibus-libpinyin"
 arch="all"
 license="GPL-2.0"
-depends="ibus libpinyin sqlite libsoup json-glib opencc"
-makedepends="ibus-dev libpinyin-dev libsoup-dev json-glib-dev intltool opencc-dev"
+depends="ibus libpinyin sqlite libsoup json-glib opencc lua5.1-libs"
+makedepends="ibus-dev libpinyin-dev libsoup-dev json-glib-dev intltool opencc-dev lua5.1-dev"
 install=""
 subpackages="$pkgname-lang"
 source="https://github.com/libpinyin/ibus-libpinyin/releases/download/1.12.1/ibus-libpinyin-1.12.1.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
-
-export IBUS_CFLAGS='-I/usr/include/ibus-1.0'
-export IBUS_LIBS='-libus-1.0 -lgio-2.0 -lgobject-2.0'
 
 build() {
 	cd "$builddir"
