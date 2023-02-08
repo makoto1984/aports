@@ -1,7 +1,7 @@
 # Contributor:
 # Maintainer:
 pkgname=ibus-libpinyin
-pkgver=1.12.1
+pkgver=1.15.0
 pkgrel=0
 pkgdesc="Chinese input method libpinyin IMEngine for IBus Framework"
 url="https://github.com/libpinyin/ibus-libpinyin"
@@ -11,7 +11,7 @@ depends="ibus libpinyin sqlite libsoup json-glib opencc lua5.1-libs"
 makedepends="ibus-dev libpinyin-dev libsoup-dev json-glib-dev intltool opencc-dev lua5.1-dev"
 install=""
 subpackages="$pkgname-lang"
-source="https://github.com/libpinyin/ibus-libpinyin/releases/download/1.12.1/ibus-libpinyin-1.12.1.tar.gz"
+source="https://github.com/libpinyin/ibus-libpinyin/releases/download/1.15.0/ibus-libpinyin-1.15.0.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 build() {
@@ -38,5 +38,5 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 sha512sums="
-9f6e692143c9716ce9a019af043d964655b3d7c11004d4c83364418600c4741c8f70e421544f90cce0aa42d463464357108c65758c5dcfe778a8dfa34d55c735  ibus-libpinyin-1.12.1.tar.gz
+617211ec80371ab15bf66a234c9ad7bd6c50cf4de9e902a1cf6eea58b0435acab567dc5a77adeefc7b961153c4c2d59fb9e9a467003b3c5fb210d08c9bb8049d  ibus-libpinyin-1.15.0.tar.gz
 "
